@@ -112,16 +112,37 @@ window.onscroll = function() {
 
 
 let scrollDistance = window.scrollY;
-	document.querySelectorAll('.section').forEach((el, i) => {
+let section = document.querySelectorAll('.section');
+let mainMenuLink = document.querySelectorAll('.main-menu-link');
+
+	section.forEach((el, i) => {
 		if (el.offsetTop - headerMenu.clientHeight <= scrollDistance) {
-			document.querySelectorAll('.main-menu-link').forEach((el) => {
+			mainMenuLink.forEach((el) => {
 				if (el.classList.contains('active')) {
 					el.classList.remove('active');
 				};
 			});
-			document.querySelectorAll('.main-menu-link')[i].classList.add('active');
+			mainMenuLink[i].classList.add('active');
 		};
 	});
+};
+
+
+//Выбор авто**********//
+let thirdItems = document.querySelectorAll('.third-item');
+
+
+
+for (let thirdItem of thirdItems) {
+	thirdItem.onclick = function() {
+		thirdItems.forEach((el, i) => {
+			if (el.classList.contains('active')) {
+				el.classList.remove('active');
+			}
+			thirdItem.classList.add('active');
+		});
+
+	};
 };
 
 
